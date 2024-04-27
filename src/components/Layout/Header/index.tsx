@@ -1,4 +1,5 @@
 import { cn } from '@/utils/cn.ts'
+import { ModeToggle } from '@/components/Layout/Header/ModeToggle'
 
 type HeaderProps = React.HTMLAttributes<HTMLDivElement>
 
@@ -8,6 +9,9 @@ export default function Header({ className }: HeaderProps) {
       <ul className="h-full flex items-center justify-between px-[20px] py-[10px]">
         <li>
           <h1 className="text-2xl font-semibold tracking-tight">Persona Creator</h1>
+        </li>
+        <li>
+          <ModeToggle />
         </li>
       </ul>
     </header>

@@ -10,7 +10,7 @@ import unusedImports from 'eslint-plugin-unused-imports'
 const compat = new FlatCompat()
 
 export default [
-  { ignores: ['dist', 'eslint.config.js', 'vite.config.ts'] },
+  { ignores: ['dist', 'eslint.config.js', 'vite.config.ts', 'tailwind.config.js'] },
   js.configs.recommended,
   ...compat.extends('plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended'),
   // 共通の設定

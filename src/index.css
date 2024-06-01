@@ -1,0 +1,26 @@
+/** color **/
+:root {
+  --main: #050A1B;
+  --accent: #35A6BD;
+  --black: #03081A;
+  --white: #E6F0F2;
+  --gray: #A1A5B2;
+}
+
+/** typography **/
+:root {
+    --title-large: bold 50px/1.3 'Jura';
+    --title-small: bold 40px/1.3 'Jura';
+    --label-bold-large: bold 25px/1.2 'Jura';
+    --label-bold-small: bold 20px/1.2 'Jura';
+    --label-large: normal 25px/1.2 'Jura';
+    --label-small: normal 20px/1.2 'Jura';
+    --body-large: normal 16px/1.5 'Jura';
+    --body-small: normal 12px/1.5 'Jura';
+}
+
+body {
+    font: var(--body-large);
+    color: var(--white);
+    background-color: var(--main);
+}

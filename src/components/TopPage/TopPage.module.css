@@ -1,0 +1,18 @@
+.container {
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 180px;
+}
+
+.title {
+    color: var(--accent);
+    font: var(--title-small);
+    padding-bottom: 120px;
+}
+
+.startButton {
+    font: var(--label-bold-small);
+}

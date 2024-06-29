@@ -1,0 +1,47 @@
+.main {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    aspect-ratio: 5 / 3;
+}
+
+.content {
+    padding: 100px 70px;
+}
+
+.corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--accent);
+}
+
+.corner.topLeft {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner.topRight {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+}
+
+.corner.bottomLeft {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+}
+
+.corner.bottomRight {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}

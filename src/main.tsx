@@ -5,7 +5,7 @@ import './index.css'
 import Layout from '@/components/Layout'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import TopPage from 'src/components/TopPage'
-import CreatePersonaDialog from 'src/components/CreatePersonaPage'
+import CreatePage from 'src/components/CreatePage'
 import ErrorPage from '@/components/ErrorPage'
 
 const router = createBrowserRouter([
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/create',
-    element: <CreatePersonaDialog />,
+    element: <CreatePage />,
   },
 ])
 

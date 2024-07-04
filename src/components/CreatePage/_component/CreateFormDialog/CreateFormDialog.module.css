@@ -87,7 +87,7 @@
     cursor: not-allowed;
 }
 
-.cancelButton {
+.clearButton {
     border: 1px solid var(--gray);
     border-radius: 5px;
     padding: 5px 10px;

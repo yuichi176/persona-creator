@@ -1,6 +1,5 @@
 import { z } from 'zod'
 import styles from './CreateFormDialog.module.css'
-import { Link } from 'react-router-dom'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useCallback } from 'react'
@@ -12,6 +11,7 @@ type CreateFormDialogProps = {
 const formValueSchema = z.object({
   age: z
     .string()
+    .min(1, { message: 'Age is required' })
     .refine((value) => !isNaN(Number(value)), { message: 'Age must be a number' })
     .refine((value) => Number(value) >= 0, { message: 'Age must be greater than 0' })
     .refine((value) => Number(value) <= 100, { message: 'Age must be less than 100' }),
@@ -25,6 +25,7 @@ export const CreateFormDialog = ({ onSubmit }: CreateFormDialogProps) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm<FormValue>({
     mode: 'onChange',
@@ -104,9 +105,14 @@ export const CreateFormDialog = ({ onSubmit }: CreateFormDialogProps) => {
         <button type="submit" className={styles.submitButton} disabled={!isValid}>
           Create
         </button>
-        <Link to={'/'} className={styles.cancelButton}>
-          Cancel
-        </Link>
+        <button
+          className={styles.clearButton}
+          onClick={() => {
+            reset()
+          }}
+        >
+          Clear
+        </button>
       </div>
     </form>
   )

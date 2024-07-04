@@ -3,9 +3,9 @@ import { CreateFormDialog, FormValue } from '@/components/CreatePage/_component/
 import { usePersonaStream } from '@/hooks/usePersonaStream.tsx'
 import Markdown from 'react-markdown'
 import styles from './CreatePage.module.css'
-import { Link } from 'react-router-dom'
 
 export default function CreatePage() {
+  const topRef = useRef<HTMLDivElement>(null)
   const { personaStream, generatePersonaProfile, resetPersonaStream } = usePersonaStream()
 
   const handleSubmit = useCallback(
@@ -17,14 +17,24 @@ export default function CreatePage() {
 
   const handleReGenerate = useCallback(() => {
     resetPersonaStream()
+    topRef.current?.scrollIntoView(true)
   }, [resetPersonaStream])
 
   return (
-    <div>
+    <div ref={topRef}>
       {(() => {
         switch (personaStream.status) {
           case 'before_generate':
-            return <CreateFormDialog onSubmit={handleSubmit} />
+            return (
+              <div>
+                <h1 className={styles.title}>Persona Creator</h1>
+                <p className={styles.description}>
+                  Please fill in the following details to generate a persona. The more specific you
+                  are, the more accurate the persona will be.
+                </p>
+                <CreateFormDialog onSubmit={handleSubmit} />
+              </div>
+            )
           case 'loading':
             return <div>Creating a persona...</div>
           case 'error':
@@ -38,15 +48,12 @@ export default function CreatePage() {
                   <PersonaMarkdown persona={personaStream.data}></PersonaMarkdown>
                 </div>
                 <div className={styles.buttonContainer}>
-                  <Link to={'/'} className={styles.topButton}>
-                    Top
-                  </Link>
                   <button
                     type="button"
                     onClick={handleReGenerate}
                     className={styles.regenerateButton}
                   >
-                    ReGenerate
+                    Regenerate
                   </button>
                 </div>
               </>

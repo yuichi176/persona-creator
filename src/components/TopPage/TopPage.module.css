@@ -15,4 +15,8 @@
 
 .startButton {
     font: var(--label-bold-small);
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
 }

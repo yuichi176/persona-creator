@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { CreateFormDialog, FormValue } from '@/components/CreatePage/_component/CreateFormDialog'
 import { usePersonaStream } from '@/hooks/usePersonaStream.tsx'
 import Markdown from 'react-markdown'
@@ -17,7 +17,7 @@ export default function CreatePage() {
 
   const handleReGenerate = useCallback(() => {
     resetPersonaStream()
-  }, [])
+  }, [resetPersonaStream])
 
   return (
     <div>
@@ -58,6 +58,17 @@ export default function CreatePage() {
 }
 
 const PersonaMarkdown = ({ persona }: { persona: string }) => {
+  const bottomRef = useRef<HTMLDivElement>(null)
   const formattedPersona = persona.replace(/\\n/g, '\n')
-  return <Markdown className={styles.markdown}>{formattedPersona}</Markdown>
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView(true)
+  }, [persona])
+
+  return (
+    <div>
+      <Markdown className={styles.markdown}>{formattedPersona}</Markdown>
+      <div ref={bottomRef} />
+    </div>
+  )
 }

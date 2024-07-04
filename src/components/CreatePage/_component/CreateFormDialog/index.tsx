@@ -16,7 +16,8 @@ const formValueSchema = z.object({
     .refine((value) => Number(value) >= 0, { message: 'Age must be greater than 0' })
     .refine((value) => Number(value) <= 100, { message: 'Age must be less than 100' }),
   gender: z.string(),
-  otherFeatures: z.string().max(500, { message: "Other feature's length must be less than 500" }),
+  location: z.string().min(1, { message: 'Location is required' }),
+  otherFeatures: z.string().max(200, { message: "Other feature's length must be less than 500" }),
 })
 export type FormValue = z.infer<typeof formValueSchema>
 
@@ -28,8 +29,9 @@ export const CreateFormDialog = ({ onSubmit }: CreateFormDialogProps) => {
   } = useForm<FormValue>({
     mode: 'onChange',
     defaultValues: {
-      age: '25',
+      age: '',
       gender: 'Male',
+      location: '',
       otherFeatures: '',
     },
     resolver: zodResolver(formValueSchema),
@@ -47,14 +49,23 @@ export const CreateFormDialog = ({ onSubmit }: CreateFormDialogProps) => {
       <div className={styles.formFieldContainer}>
         <div className={styles.formField}>
           <label>
-            <p className={styles.label}>Age</p>
-            <input className={styles.numberInput} {...register('age')} />
+            <p className={styles.label}>
+              Age<span className={styles.requiredText}>*required</span>
+            </p>
+            <input
+              className={styles.textInput}
+              placeholder="e.g. 25"
+              autoComplete="off"
+              {...register('age')}
+            />
           </label>
           <p className={styles.errorMessage}>{errors.age?.message}</p>
         </div>
         <div className={styles.formField}>
           <label>
-            <p className={styles.label}>Gender</p>
+            <p className={styles.label}>
+              Gender<span className={styles.requiredText}>*required</span>
+            </p>
             <select className={styles.select} {...register('gender')}>
               <option>Male</option>
               <option>Female</option>
@@ -64,11 +75,25 @@ export const CreateFormDialog = ({ onSubmit }: CreateFormDialogProps) => {
         </div>
         <div className={styles.formField}>
           <label>
-            <p className={styles.label}>Other Feature</p>
+            <p className={styles.label}>
+              Location<span className={styles.requiredText}>*required</span>
+            </p>
+            <input
+              className={styles.textInput}
+              placeholder="e.g. Tokyo, Japan"
+              autoComplete="off"
+              {...register('location')}
+            />
+          </label>
+          <p className={styles.errorMessage}>{errors.location?.message}</p>
+        </div>
+        <div className={styles.formField}>
+          <label>
+            <p className={styles.label}>Other Features (within 200 characters)</p>
             <textarea
               className={styles.textarea}
               rows={5}
-              placeholder="Other features..."
+              placeholder="e.g. Occupation: Software Engineer, Education: Master's Degree, Hobbies: Hiking and Reading, Lifestyle: Vegetarian, Interests: Technology and Art"
               {...register('otherFeatures')}
             />
           </label>

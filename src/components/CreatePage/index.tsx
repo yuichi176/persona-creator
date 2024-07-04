@@ -10,7 +10,7 @@ export default function CreatePage() {
 
   const handleSubmit = useCallback(
     async (values: FormValue) => {
-      await generatePersonaProfile(values.age, values.gender, values.otherFeatures)
+      await generatePersonaProfile(values.age, values.gender, values.location, values.otherFeatures)
     },
     [generatePersonaProfile],
   )

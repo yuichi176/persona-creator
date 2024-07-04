@@ -86,6 +86,7 @@ export const generatePersonaStream = async (
 const generatePersonaRequestBodySchema = z.object({
   age: z.string(),
   gender: z.string(),
+  location: z.string(),
   otherFeatures: z.string(),
 })
 type GeneratePersonaRequestBody = z.infer<typeof generatePersonaRequestBodySchema>

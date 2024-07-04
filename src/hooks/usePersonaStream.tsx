@@ -13,7 +13,12 @@ export type PersonaStream =
 
 export const usePersonaStream = (): {
   personaStream: PersonaStream
-  generatePersonaProfile: (age: string, gender: string, otherFeatures: string) => Promise<void>
+  generatePersonaProfile: (
+    age: string,
+    gender: string,
+    location: string,
+    otherFeatures: string,
+  ) => Promise<void>
   resetPersonaStream: () => void
 } => {
   const [personaStream, setPersonaStream] = useState<PersonaStream>({
@@ -22,7 +27,7 @@ export const usePersonaStream = (): {
   })
 
   const generatePersonaProfile = useCallback(
-    async (age: string, gender: string, otherFeatures: string) => {
+    async (age: string, gender: string, location: string, otherFeatures: string) => {
       setPersonaStream({
         status: 'loading',
         data: undefined,
@@ -30,6 +35,7 @@ export const usePersonaStream = (): {
       const data = await generatePersonaStream({
         age: age,
         gender: gender,
+        location: location,
         otherFeatures: otherFeatures,
       })
       if (data.error !== undefined) {

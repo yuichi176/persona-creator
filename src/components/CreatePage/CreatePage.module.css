@@ -1,0 +1,32 @@
+.markdown h1 {
+    color: var(--accent);
+}
+
+.markdown p {
+    margin-bottom: 15px;
+}
+
+.resultContainer {
+    margin-bottom: 50px;
+}
+
+.buttonContainer {
+    display: flex;
+}
+
+.regenerateButton {
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font: var(--body-large);
+    cursor: pointer;
+}
+
+.topButton {
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font: var(--body-large);
+    cursor: pointer;
+    margin-right: 10px;
+}

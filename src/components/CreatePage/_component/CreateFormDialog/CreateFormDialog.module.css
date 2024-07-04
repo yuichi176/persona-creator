@@ -38,6 +38,10 @@
     color: var(--gray);
 }
 
+.textInput:focus {
+    border: 1px solid var(--accent);
+}
+
 .select {
     width: 100%;
     padding: 10px;
@@ -45,6 +49,10 @@
     border-radius: 5px;
     font: var(--body-large);
     background-color: var(--black);
+}
+
+.select:focus {
+    border: 1px solid var(--accent);
 }
 
 .textarea {
@@ -59,6 +67,10 @@
 
 .textarea::placeholder {
     color: var(--gray);
+}
+
+.textarea:focus {
+    border: 1px solid var(--accent);
 }
 
 .submitButton {

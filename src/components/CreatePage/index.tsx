@@ -36,7 +36,12 @@ export default function CreatePage() {
               </div>
             )
           case 'loading':
-            return <div>Creating a persona...</div>
+            return (
+              <div className={styles.loadMessageContainer}>
+                <p>Creating a persona</p>
+                <div className={styles.loadIndicator}></div>
+              </div>
+            )
           case 'error':
             return <div>Failed to create a persona</div>
           case 'generating':
